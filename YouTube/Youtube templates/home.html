@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block header2 %}
+	{% include 'includes/_youtubeNavBar.html' %}
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<h2>Download YouTube Videos</h2>
+		<form action="{{url_for('youtube_blueprint.download')}}" method="POST">
+			<input type="text" name="URL" class="url" placeholder="Enter the URL">
+			<input type="submit" class="btn" value="Download">
+		</form>
+		<div class="box" id="box"></div>
+	</div>	
+	{% include 'includes/_model.html' %}
+{% endblock %}

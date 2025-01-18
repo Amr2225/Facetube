@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root{
+    --hover-width: 75%;
+    --other-width: 25%;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lato', 'sans-serif';
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+i{
+    color: white;
+    margin-left: 8px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+img{
+    image-rendering: optimizeQuality;
+    width: 50%;
+    height: 50%;
+}
+
+.container{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* The split class */
+.split{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.split h2{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.split > h2:hover i{
+    margin-left: 35px;
+}
+
+/* Each side */
+.split.facebook{
+    left: 0;
+    background-color: #345BDE;
+    z-index: 1;
+    box-shadow: 8px 0 10px rgba(50, 71, 204, 0.50);
+}
+
+/* .split.facebook img{
+    width: 45%;
+    height: 50%;
+} */
+
+.split.youtube{
+    right: 0;
+    background-color: #E0292D;
+}
+
+.split.youtube > h2{
+    margin-top: 20px;
+}
+
+/* The Welcome msg */
+.content{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    color: white;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.content h2{
+    font-size: 2rem;
+}
+
+.content p{
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: 1.18rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hover-left .facebook, .hover-right .youtube{
+    width: var(--hover-width);
+}
+
+.hover-left .youtube, .hover-right .facebook{
+    width: var(--other-width);
+}
+
+.hover-left .content{
+    left: var(--hover-width);
+}
+
+.hover-right .content{
+    left: var(--other-width);
+}
+
+
+@media(max-width: 850px){
+    .split{
+        width: 100%;
+        height: 50%;
+    }
+    .split.youtube{
+        top: 0;
+    }
+    .split.facebook{
+        top: 50%;
+    }
+    .split.facebook > img{
+        margin-top: 30px;
+    }
+    img{
+        display: block;
+        margin-left: -10px;
+        image-rendering: optimizeQuality;
+        width: 20%;
+        height: 50%;
+    }
+    .split.youtube img{
+        margin-top: -30px;
+    }
+    .content{
+        border: 2px solid white;
+        padding: 1rem;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .content h2{
+        font-size: 1.1rem;
+    }
+    .content p{
+        font-size: .8rem;
+    }
+}
+
+@media(max-width: 650px){
+    img{
+        width: 30%;
+    }
+}
+
+@media(max-width: 420px){
+    img{
+        width: 40%;
+    }
+}

@@ -1,0 +1,15 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+	{% if messages %}
+		{% for category, msg in messages%}
+			{% if category == 'active' %}
+				<div class="model {{category}}" id="model">
+			        <i id="close" class="fas fa-times fa-2x"></i>
+			        <hr>
+			        <h2>Welcome to the model</h2>
+			        <p>{{msg}}</p>
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block header2 %}
+	{% include 'includes/_youtubeNavBar.html' %}
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<h2>Download YouTube Videos</h2>
+		<form action="{{url_for('youtube_blueprint.search')}}" method="POST">
+			<input type="text" name="URL" class="url" placeholder="Enter the URL">
+			<input type="submit" class="btn" value="Search">
+		</form>
+			{% with message = get_flashed_messages(category_filter=['class']) %}
+				{% if message %}
+					{% for msg in message %}
+						<form action="{{url_for('youtube_blueprint.get')}}", method="POST", class="center {{msg}}">
+							<select name="res" id="resloutions" class="btn list">
+								<option value="">Select a resolution</option>
+									{% if resolutions %}
+										{% for res in resolutions %}					
+											<option value="{{res}}">{{res}}</option>
+										{% endfor %}
+									{% endif %}
+								</select>
+							<input type="submit" value="Get" class="{{msg}} btn get" id="get">
+						</form>		
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+		<div class="box" id="box"></div>
+	</div>
+	{% include 'includes/_model.html' %}
+{% endblock %}

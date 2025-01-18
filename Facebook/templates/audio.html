@@ -1,0 +1,15 @@
+{% extends 'facebook_base.html' %}
+{% block header2 %}
+    {% include 'includes/_FacebookNavBar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+		<h2>Download Facebook To mp3</h2>
+		<form action="{{url_for('facebook.downloadAudio')}}" method="POST">
+			<input type="text" name="URL" class="url" placeholder="Enter the URL">
+			<input type="submit" class="btn" value="Download" id="download">
+		</form>
+	</div>
+    {% include 'includes/_model.html' %}
+{% endblock  %}
